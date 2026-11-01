@@ -1,0 +1,1198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, My Love! ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Georgia, serif;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 20% 20%, #ffe8f1 0%, transparent 35%),
+        radial-gradient(circle at 80% 80%, #ffd9e9 0%, transparent 35%),
+        linear-gradient(135deg, #ffd4e5, #fff5f8);
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+}
+
+body::before {
+    background: rgba(255,255,255,.25);
+    top: -150px;
+    left: -150px;
+}
+
+body::after {
+    background: rgba(255,150,190,.15);
+    bottom: -150px;
+    right: -150px;
+}
+
+.container {
+    width: 100%;
+    max-width: 430px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* BIRTHDAY CAKE */
+
+.cake-screen {
+    text-align: center;
+    color: #87455f;
+    animation: appear 1s ease;
+}
+
+.cake-screen h1 {
+    color: #c6537c;
+    font-size: 29px;
+    margin: 4px 0 8px;
+}
+
+.cake-caption {
+    color: #9d6279;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0 0 18px;
+}
+
+.cake-illustration {
+    position: relative;
+    width: 230px;
+    height: 205px;
+    margin: 10px auto 18px;
+}
+
+.cake-plate {
+    position: absolute;
+    width: 220px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(#fff, #f2c8d8);
+    bottom: 10px;
+    left: 5px;
+    box-shadow: 0 8px 16px rgba(150,70,100,.16);
+}
+
+.cake-bottom {
+    position: absolute;
+    width: 180px;
+    height: 65px;
+    left: 25px;
+    bottom: 25px;
+    border-radius: 12px 12px 20px 20px;
+    background: linear-gradient(180deg, #f7a9c4, #df709b);
+    box-shadow: inset 0 -7px 0 rgba(177,66,112,.12);
+}
+
+.cake-top {
+    position: absolute;
+    width: 180px;
+    height: 48px;
+    left: 25px;
+    bottom: 76px;
+    border-radius: 50% 50% 12px 12px / 35% 35% 12px 12px;
+    background: linear-gradient(180deg, #fff4f7, #f8c9da);
+    border-bottom: 5px solid #e995b4;
+}
+
+.cake-drip {
+    position: absolute;
+    width: 18px;
+    height: 25px;
+    left: 55px;
+    bottom: 64px;
+    border-radius: 0 0 12px 12px;
+    background: #fff0f5;
+    box-shadow:
+        34px 4px 0 -1px #fff0f5,
+        75px -1px 0 #fff0f5,
+        112px 4px 0 -1px #fff0f5;
+}
+
+.cake-sprinkles {
+    position: absolute;
+    left: 55px;
+    bottom: 49px;
+    color: #fff8fb;
+    font-size: 17px;
+    letter-spacing: 12px;
+}
+
+.candle {
+    position: absolute;
+    width: 12px;
+    height: 48px;
+    left: 109px;
+    bottom: 120px;
+    border-radius: 5px 5px 2px 2px;
+    background: repeating-linear-gradient(
+        135deg,
+        #fff 0 6px,
+        #c875a0 6px 11px
+    );
+}
+
+.flame {
+    position: absolute;
+    width: 17px;
+    height: 25px;
+    left: 106px;
+    bottom: 165px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 50% 65%,
+        #fff8a8 0 20%,
+        #ffb347 45%,
+        #ff7b65 75%
+    );
+    transform-origin: 50% 90%;
+    animation: flicker .55s infinite alternate;
+    filter: drop-shadow(0 0 8px rgba(255,165,75,.65));
+}
+
+.cake-heart {
+    position: absolute;
+    left: 94px;
+    bottom: 45px;
+    color: #fff7fb;
+    font-size: 23px;
+}
+
+/* SONG AND BIRTHDAY WISH */
+
+.song-lines {
+    min-height: 65px;
+    color: #b45c80;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.7;
+    margin: 10px auto 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.blow-hint {
+    color: #9d6279;
+    font-size: 14px;
+    margin-top: 8px;
+    display: none;
+    animation: softPulse 2s infinite;
+}
+
+.birthday-button {
+    border: 0;
+    border-radius: 999px;
+    padding: 13px 23px;
+    color: white;
+    background: linear-gradient(135deg, #d85e91, #a94b83);
+    font-family: Georgia, serif;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(173,72,119,.22);
+    transition: .2s ease;
+}
+
+.birthday-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 11px 22px rgba(173,72,119,.28);
+}
+
+.birthday-button:disabled {
+    cursor: default;
+    opacity: .7;
+}
+
+/* BIRTHDAY CARD */
+
+.hint {
+    display: none;
+    color: #9d5272;
+    margin-bottom: 18px;
+    font-size: 16px;
+    letter-spacing: .5px;
+    animation: softPulse 2s infinite;
+}
+
+.card {
+    display: none;
+    width: 340px;
+    min-height: 245px;
+    margin: auto;
+    padding: 35px 28px;
+    background: rgba(255,255,255,.82);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 28px;
+    box-shadow:
+        0 20px 50px rgba(139,65,100,.20),
+        inset 0 1px 0 rgba(255,255,255,.8);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: .7s ease;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 25px 60px rgba(139,65,100,.27);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 50%;
+    height: 300%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.5),
+        transparent
+    );
+    transform: rotate(25deg);
+    animation: shine 5s infinite;
+    pointer-events: none;
+}
+
+.front, .message, .letter {
+    position: relative;
+    z-index: 2;
+}
+
+.heart {
+    font-size: 65px;
+    display: inline-block;
+    animation: heartbeat 1.5s infinite;
+    filter: drop-shadow(0 6px 8px rgba(200,70,110,.25));
+}
+
+.title {
+    color: #c6537c;
+    font-size: 25px;
+    margin: 13px 0 8px;
+}
+
+.subtitle {
+    color: #8d6171;
+    font-size: 15px;
+}
+
+.message {
+    display: none;
+    color: #87455f;
+    font-size: 22px;
+    line-height: 1.6;
+    animation: appear 1s ease;
+}
+
+.message .small-heart {
+    font-size: 55px;
+}
+
+.message small {
+    display: block;
+    margin-top: 20px;
+    color: #b06a87;
+    font-size: 13px;
+}
+
+.letter {
+    display: none;
+    text-align: left;
+    color: #5e4651;
+    font-size: 15.5px;
+    line-height: 1.85;
+    animation: appear 1.2s ease;
+}
+
+.letter h2 {
+    text-align: center;
+    color: #c6537c;
+    font-size: 25px;
+    margin-top: 0;
+    margin-bottom: 22px;
+}
+
+.letter .little-line {
+    text-align: center;
+    color: #d98aa5;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.letter p {
+    margin-bottom: 17px;
+}
+
+.highlight {
+    color: #c6537c;
+    font-weight: bold;
+}
+
+.big-reminder {
+    text-align: center;
+    margin: 25px 0;
+    padding: 20px 10px;
+    background: rgba(255,220,232,.45);
+    border-radius: 20px;
+    color: #c6537c;
+    font-size: 19px;
+    line-height: 1.8;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+.signature {
+    text-align: right;
+    color: #c6537c;
+    font-style: italic;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(198,83,124,.15);
+}
+
+.card.opened {
+    width: 390px;
+    min-height: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    cursor: default;
+}
+
+.card.opened::-webkit-scrollbar {
+    width: 5px;
+}
+
+.card.opened::-webkit-scrollbar-thumb {
+    background: #e9a6bd;
+    border-radius: 10px;
+}
+
+/* FLOATING DECORATIONS */
+
+.floating {
+    position: fixed;
+    bottom: -30px;
+    pointer-events: none;
+    z-index: 1;
+    animation: floatUp linear forwards;
+}
+
+.star {
+    position: fixed;
+    color: rgba(255,255,255,.9);
+    animation: twinkle 2s infinite alternate;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ANIMATIONS */
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.08); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.12); }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes softPulse {
+    0%, 100% { opacity: .65; }
+    50% { opacity: 1; }
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    25%, 100% { left: 160%; }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(.8);
+        opacity: 0;
+    }
+    15% { opacity: .8; }
+    100% {
+        transform: translateY(-115vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes twinkle {
+    from {
+        opacity: .2;
+        transform: scale(.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes flicker {
+    from { transform: rotate(-5deg) scale(.96); }
+    to { transform: rotate(5deg) scale(1.05); }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 500px) {
+    body {
+        align-items: center;
+    }
+
+    .container {
+        padding: 12px;
+    }
+
+    .card {
+        width: 310px;
+        padding: 30px 23px;
+    }
+
+    .card.opened {
+        width: 94vw;
+        min-height: 550px;
+        max-height: 82vh;
+    }
+
+    .letter {
+        font-size: 14.5px;
+        line-height: 1.75;
+    }
+
+    .title {
+        font-size: 23px;
+    }
+
+    .message {
+        font-size: 20px;
+    }
+
+    .big-reminder {
+        font-size: 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- BIRTHDAY CAKE INTRO -->
+
+    <div class="cake-screen" id="cakeScreen">
+
+        <h1>Happy Birthday, My Love! 🎂</h1>
+
+        <p class="cake-caption">
+            Today is all about you, my love. 💗
+            <br>
+            Let this little melody make your day extra special. ✨
+        </p>
+
+        <div class="cake-illustration">
+            <div class="cake-plate"></div>
+            <div class="cake-bottom"></div>
+            <div class="cake-top"></div>
+            <div class="cake-drip"></div>
+            <div class="cake-sprinkles">· · · ·</div>
+            <div class="candle"></div>
+            <div class="flame" id="flame"></div>
+            <div class="cake-heart">♡</div>
+        </div>
+
+        <div class="song-lines" id="songLines">
+            A little birthday melody, made just for you. 🎶
+        </div>
+
+        <p class="blow-hint" id="blowHint">
+            Blow into your microphone to put out the candle! 🕯️💨
+        </p>
+
+        <button
+            class="birthday-button"
+            id="singButton"
+            onclick="startBirthdaySong()">
+            🎶 Sing Happy Birthday
+        </button>
+
+    </div>
+
+    <!-- BIRTHDAY CARD -->
+
+    <div class="hint" id="hint">
+        Click the card 💌
+    </div>
+
+    <div class="card" id="card" onclick="openCard()">
+
+        <div class="front" id="front">
+
+            <div class="heart">💗</div>
+
+            <div class="title">
+                Happy Birthday, my love!
+            </div>
+
+            <p class="subtitle">
+                A little something made with love, just for you. 💗
+            </p>
+
+            <p>Open your birthday surprise... 💌</p>
+
+        </div>
+
+        <!-- FIRST CLICK MESSAGE -->
+
+        <div class="message" id="message">
+
+            <div class="heart small-heart">🎂</div>
+
+            <p>
+                Happy Birthday!<br>
+                <span class="highlight">
+                    I wish I could celebrate with you today.
+                </span>
+            </p>
+
+            <p style="font-size:17px;">
+                Even from miles away, I'm sending you all my love. ❤️
+            </p>
+
+            <small>
+                There's a special message I want you to read...<br>
+                Click again to open it 💌
+            </small>
+
+        </div>
+
+        <!-- FULL BIRTHDAY LETTER -->
+
+        <div class="letter" id="letter">
+
+            <h2>Happy Birthday, My Love! ❤️</h2>
+
+            <div class="little-line">
+                ♡ a birthday letter from me to you ♡
+            </div>
+
+            <p>Happy Birthday, my love! ❤️</p>
+
+            <p>
+                First of all, I want to wish you a very happy birthday.
+                I hope you enjoy your special day and feel how much you
+                are loved and appreciated. I wish I could be there with
+                you right now, hug you tightly, kiss you, and celebrate
+                your birthday together. Sadly, distance keeps us apart,
+                but I hope this simple message makes you feel how special
+                you are to me.
+            </p>
+
+            <p>
+                You know, sometimes I wish nga naa ra ko diha sa imong
+                kilid. Kanang pwede tika ma-hug anytime, hold your hand,
+                and spend time with you without worrying about the
+                distance. Lisod usahay ang LDR, especially kanang
+                mingawon kaayo ko nimo pero kutob ra ta sa calls and
+                messages. There are times nga I wish I could just be
+                with you, even without doing anything special. I just
+                want to be there with you.
+            </p>
+
+            <p>
+                But despite the distance, I'm still thankful because
+                I have you. Thank you for coming into my life and for
+                being someone I can share my happiness, random stories,
+                and even my worries with. Thank you for your time,
+                effort, patience, and love. I know dili man perfect
+                atong relationship, and we still have a lot to learn
+                about each other, but I hope we continue to understand
+                one another and choose each other every day.
+            </p>
+
+            <p>
+                On your birthday, I pray nga hatagan ka ni Lord og
+                good health, more blessings, happiness, and success
+                in life. I hope all your dreams and plans will slowly
+                come true. Ayaw kalimot og amping sa imong self, ha?
+                Eat on time, get enough rest, and don't stress yourself
+                too much. I know naa kay mga goals nga gusto ma-achieve,
+                and I hope you never give up on them. Always believe
+                in yourself because I know kaya nimo.
+            </p>
+
+            <p>
+                I want you to know nga I'm always proud of you, even
+                sa mga small achievements nimo nga basin para nimo
+                ordinaryo ra, pero para nako worth celebrating na.
+                If ever kapoy na ka, don't be afraid to rest. You don't
+                always have to be strong. It's okay to have bad days,
+                and it's okay to feel tired. I hope you know nga naa
+                ra ko diri, willing maminaw sa imong mga stories,
+                rants, and even sa imong mga random thoughts.
+            </p>
+
+            <p>
+                I may not be the perfect girlfriend, and sometimes
+                basin naa koy mga sayop or things nga dili nako
+                ma-express properly. Nya usahay saputon pa jud kaayo
+                ko HAHAHA, but please know that my love for you is
+                genuine. I hope we never get tired of communicating,
+                understanding, and fixing things together. If naa tay
+                misunderstandings, I hope we choose to talk instead
+                of giving up. I want us to grow together and become
+                better for ourselves and for each other.
+            </p>
+
+            <p>
+                And lastly, thank you kaayo for understanding me,
+                especially sa mga times nga lisod ko sabton. Thank you
+                for being patient with me and for trying to understand
+                my feelings. I know sometimes dili ko sayon sabton,
+                and there are times nga I can't explain what I really
+                feel, but I appreciate you for staying and trying to
+                understand me. Salamat kaayo sa imong pagsabot kanako.
+                I hope you also feel nga I'm always willing to
+                understand you, listen to you, and accept you even on
+                your difficult days. I don't want you to feel nga ikaw
+                ra pirmi ang mag-adjust because this relationship is
+                not just about me or you, it's about us. I want us to
+                keep learning how to love each other better.
+            </p>
+
+            <p>
+                One of the things I look forward to the most is the
+                day nga magkita na gyud ta. Kanang dili na ta kinahanglan
+                mag-goodbye tungod lang sa distance. I want to experience
+                even the simplest things with you, like eating together,
+                walking side by side, holding your hand, and creating
+                memories that we can look back on someday. I hope that
+                one day, I get to celebrate your birthday right beside
+                you, hug you tightly, kiss you, and make you feel how
+                much you mean to me in person instead of just sending
+                you virtual hugs and kisses. HAHAHA. I can't wait for
+                the day when distance will no longer keep us apart.
+            </p>
+
+            <p>
+                For now, let's just keep holding on and making this
+                relationship work. I know the distance isn't easy,
+                but I hope we never forget why we started and how
+                much we mean to each other.
+            </p>
+
+            <div class="big-reminder">
+                ❤️<br>
+                <strong>
+                    No matter how many miles are between us,<br>
+                    you are always special to me.
+                </strong>
+                <br>
+                💗
+            </div>
+
+            <p>
+                Again, HAPPY BIRTHDAY, MY LOVE! ❤️ I hope this new
+                chapter of your life brings you so many reasons to
+                smile. Enjoy your day because you deserve to be happy.
+                I wish you nothing but the best in life.
+            </p>
+
+            <p>
+                I love you so much, and I'm always thankful to have
+                you. Amping pirmi, okay? I love you, birthday boy!
+                More birthdays to celebrate together, and hopefully,
+                the next ones won't be through a screen anymore.
+            </p>
+
+            <p>
+                Mwaaaaa! Sending you the biggest hug and sweetest
+                kisses from afar. I LOVE YOU! ❤️😘
+            </p>
+
+            <p class="signature">
+                With all my love,<br>
+                Karylle💗
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+let clicks = 0;
+let songHasStarted = false;
+let microphoneStream = null;
+let blowDetectionActive = false;
+
+/* SHOW BIRTHDAY CARD */
+
+function showBirthdayCard() {
+
+    document.getElementById("cakeScreen").style.display = "none";
+
+    document.getElementById("hint").style.display = "block";
+
+    document.getElementById("card").style.display = "block";
+
+}
+
+/* PLAY MUSICAL NOTE */
+
+function playNote(ctx, frequency, startTime, duration) {
+
+    const oscillator = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    oscillator.type = "triangle";
+
+    oscillator.frequency.setValueAtTime(
+        frequency,
+        startTime
+    );
+
+    gain.gain.setValueAtTime(0.0001, startTime);
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.16,
+        startTime + 0.025
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        startTime + duration
+    );
+
+    oscillator.connect(gain);
+    gain.connect(ctx.destination);
+
+    oscillator.start(startTime);
+    oscillator.stop(startTime + duration + 0.03);
+
+}
+
+/* HAPPY BIRTHDAY SONG - 30-SECOND WISH TIME */
+
+async function startBirthdaySong() {
+
+    if (songHasStarted) return;
+
+    songHasStarted = true;
+
+    const button = document.getElementById("singButton");
+    const lyrics = document.getElementById("songLines");
+
+    button.disabled = true;
+    button.textContent = "🎵 Playing your birthday song...";
+
+    try {
+
+        const AudioContextClass =
+            window.AudioContext || window.webkitAudioContext;
+
+        if (!AudioContextClass) {
+            throw new Error("Audio is not supported");
+        }
+
+        const audioContext = new AudioContextClass();
+
+        await audioContext.resume();
+
+        const beat = 0.38;
+
+        const notes = [
+            [392,1],[392,1],[440,2],[392,2],[523,2],[494,4],
+            [392,1],[392,1],[440,2],[392,2],[587,2],[523,4],
+            [392,1],[392,1],[784,2],[659,2],[523,2],[494,2],[440,4],
+            [698,1],[698,1],[659,2],[523,2],[587,2],[523,4]
+        ];
+
+        const lyricLines = [
+            "Happy birthday to you... 💗",
+            "Happy birthday to you... 🎂",
+            "Happy birthday, dear birthday boy... ✨",
+            "Happy birthday to you! ❤️"
+        ];
+
+        const lineStarts = [0, 12, 24, 38];
+
+        let time = audioContext.currentTime + 0.15;
+
+        // PLAY THE COMPLETE MELODY
+
+        notes.forEach(([frequency, beats]) => {
+
+            const duration = beat * beats;
+
+            playNote(
+                audioContext,
+                frequency,
+                time,
+                duration * 0.88
+            );
+
+            time += duration;
+
+        });
+
+        // SHOW LYRICS WHILE THE SONG PLAYS
+
+        lineStarts.forEach((startIndex, i) => {
+
+            setTimeout(() => {
+
+                lyrics.textContent = lyricLines[i];
+
+            }, startIndex * beat * 1000);
+
+        });
+
+        // CALCULATE COMPLETE SONG DURATION
+
+        const totalDuration = (
+            notes.reduce((sum, note) => sum + note[1], 0)
+            * beat + 1.2
+        ) * 1000;
+
+        // AFTER THE SONG, SHOW THE WISH MESSAGE
+
+        setTimeout(() => {
+
+            lyrics.innerHTML =
+                "Close your eyes... <br>" +
+                "Make a wish, birthday boy! 🎂<br>" +
+                "Your special moment... ✨";
+
+            button.style.display = "none";
+
+            // WAIT 30 SECONDS BEFORE SHOWING THE BLOW INSTRUCTION
+
+            setTimeout(() => {
+
+                document.getElementById("blowHint").style.display = "block";
+
+                // START MICROPHONE DETECTION AFTER 30 SECONDS
+
+                startBlowDetection();
+
+            }, 30000);
+
+        }, totalDuration);
+
+    } catch (error) {
+
+        lyrics.textContent =
+            "Happy Birthday, my love! 💗";
+
+        button.disabled = false;
+
+        button.textContent = "Open your birthday card 💌";
+
+        button.onclick = showBirthdayCard;
+
+    }
+
+}
+
+/* DETECT BLOWING USING MICROPHONE */
+
+async function startBlowDetection() {
+
+    try {
+
+        const stream = await navigator.mediaDevices.getUserMedia({
+            audio: {
+                echoCancellation: false,
+                noiseSuppression: false,
+                autoGainControl: false
+            }
+        });
+
+        microphoneStream = stream;
+
+        const AudioContextClass =
+            window.AudioContext || window.webkitAudioContext;
+
+        const micContext = new AudioContextClass();
+
+        await micContext.resume();
+
+        const microphone = micContext.createMediaStreamSource(stream);
+
+        const analyser = micContext.createAnalyser();
+
+        analyser.fftSize = 1024;
+
+        microphone.connect(analyser);
+
+        const data = new Uint8Array(analyser.fftSize);
+
+        let consecutiveFrames = 0;
+
+        blowDetectionActive = true;
+
+        function checkBlowing() {
+
+            if (!blowDetectionActive) return;
+
+            analyser.getByteTimeDomainData(data);
+
+            let sum = 0;
+
+            for (let i = 0; i < data.length; i++) {
+
+                const normalized = (data[i] - 128) / 128;
+
+                sum += normalized * normalized;
+
+            }
+
+            const volume = Math.sqrt(sum / data.length);
+
+            // DETECT A SUSTAINED BLOWING SOUND
+
+            if (volume > 0.055) {
+
+                consecutiveFrames++;
+
+            } else {
+
+                consecutiveFrames = 0;
+
+            }
+
+            if (consecutiveFrames >= 12) {
+
+                extinguishCandle();
+
+                micContext.close();
+
+                return;
+
+            }
+
+            requestAnimationFrame(checkBlowing);
+
+        }
+
+        checkBlowing();
+
+    } catch (error) {
+
+        document.getElementById("blowHint").innerHTML =
+            "Please allow microphone access to blow out your candle. 💗";
+
+        // FALLBACK BUTTON IF MICROPHONE IS UNAVAILABLE
+
+        const button = document.getElementById("singButton");
+
+        button.style.display = "inline-block";
+        button.disabled = false;
+        button.textContent = "Blow out the candle 🕯️";
+        button.onclick = extinguishCandle;
+
+    }
+
+}
+
+/* EXTINGUISH THE CANDLE */
+
+function extinguishCandle() {
+
+    if (!blowDetectionActive &&
+        document.getElementById("flame").style.display === "none") {
+        return;
+    }
+
+    blowDetectionActive = false;
+
+    // STOP MICROPHONE
+
+    if (microphoneStream) {
+
+        microphoneStream.getTracks().forEach(track => {
+            track.stop();
+        });
+
+        microphoneStream = null;
+
+    }
+
+    // TURN OFF THE FLAME
+
+    document.getElementById("flame").style.display = "none";
+
+    // SHOW THE FINAL BIRTHDAY MESSAGE
+
+    document.getElementById("songLines").innerHTML =
+        "I hope all your wishes come true. ❤️<br>" +
+        "You deserve all the happiness in the world. 💗";
+
+    document.getElementById("blowHint").style.display = "none";
+
+    // SHOW THE BIRTHDAY CARD BUTTON
+
+    const button = document.getElementById("singButton");
+
+    button.style.display = "inline-block";
+    button.disabled = false;
+    button.textContent = "Open your birthday card 💌";
+    button.onclick = showBirthdayCard;
+
+}
+
+/* OPEN THE BIRTHDAY CARD */
+
+function openCard() {
+
+    clicks++;
+
+    const front = document.getElementById("front");
+    const message = document.getElementById("message");
+    const letter = document.getElementById("letter");
+    const card = document.getElementById("card");
+    const hint = document.getElementById("hint");
+
+    // FIRST CLICK
+
+    if (clicks === 1) {
+
+        front.style.display = "none";
+
+        message.style.display = "block";
+
+        hint.innerHTML =
+            "Click again to open your letter 💌";
+
+    }
+
+    // SECOND CLICK
+
+    else if (clicks === 2) {
+
+        message.style.display = "none";
+
+        card.classList.add("opened");
+
+        letter.style.display = "block";
+
+        hint.innerHTML =
+            "💗 A little birthday letter just for you 💗";
+
+    }
+
+}
+
+/* FLOATING HEARTS AND FLOWERS */
+
+function createFloating() {
+
+    const item = document.createElement("div");
+
+    item.classList.add("floating");
+
+    const decorations = [
+        "💗", "💕", "💖", "💞",
+        "🌸", "🌷", "🌹", "✨", "♡"
+    ];
+
+    item.innerHTML =
+        decorations[
+            Math.floor(Math.random() * decorations.length)
+        ];
+
+    item.style.left = Math.random() * 100 + "vw";
+
+    item.style.fontSize =
+        (15 + Math.random() * 18) + "px";
+
+    item.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(item);
+
+    setTimeout(() => {
+        item.remove();
+    }, 10000);
+
+}
+
+/* FLOATING STARS */
+
+function createStar() {
+
+    const star = document.createElement("div");
+
+    star.classList.add("star");
+
+    star.innerHTML = "✦";
+
+    star.style.left = Math.random() * 100 + "vw";
+
+    star.style.top = Math.random() * 100 + "vh";
+
+    star.style.fontSize =
+        (8 + Math.random() * 10) + "px";
+
+    star.style.animationDelay =
+        Math.random() * 2 + "s";
+
+    document.body.appendChild(star);
+
+    setTimeout(() => {
+        star.remove();
+    }, 4000);
+
+}
+
+/* START DECORATIONS */
+
+setInterval(createFloating, 650);
+
+setInterval(createStar, 900);
+
+</script>
+
+</body>
+</html>
